@@ -25,9 +25,17 @@
     }];
     [Parse initializeWithConfiguration:configuration];
     
+    if (PFUser.currentUser != nil) {
+        NSLog(@"Welcome back %@ 😀", PFUser.currentUser.username);
+        
+        // TODO: Load Chat view controller and set as root view controller
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIViewController *chatNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"ChatNavigationController"];
+        self.window.rootViewController = chatNavigationController;
+    }
+    
     return YES;
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
