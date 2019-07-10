@@ -90,11 +90,104 @@
                     <connections>
                         <outlet property="passwordField" destination="aMA-Xb-Nyx" id="OaV-0R-BvU"/>
                         <outlet property="usernameField" destination="4yx-DG-s2Y" id="Tga-Ee-JSg"/>
+                        <segue destination="MdG-eO-pFN" kind="presentation" identifier="loginSegue" id="ke7-da-7tg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q26-em-ku9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="376.80000000000001" y="158.77061469265368"/>
+        </scene>
+        <!--Chat-->
+        <scene sceneID="E4V-GR-OdX">
+            <objects>
+                <viewController id="Hwq-ac-993" customClass="ChatViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NRf-OI-gBH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type a message..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WuR-3a-rc9">
+                                <rect key="frame" x="20" y="84" width="275" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZ5-6U-rOV">
+                                <rect key="frame" x="315" y="84" width="40" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="YZ0-Lq-kWB"/>
+                                    <constraint firstAttribute="height" constant="33" id="bBW-t3-xpj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Send"/>
+                                <connections>
+                                    <action selector="didPressSend:" destination="Hwq-ac-993" eventType="touchUpInside" id="Zs9-fL-0g2"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1hR-4g-Xib">
+                                <rect key="frame" x="0.0" y="134" width="375" height="533"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="88" id="SIu-fq-BWp" customClass="ChatCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="88"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SIu-fq-BWp" id="7Ha-Z8-zdB">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUT-Z8-Afa">
+                                                    <rect key="frame" x="15" y="21" width="69" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="WuR-3a-rc9" firstAttribute="top" secondItem="ioY-Mg-aDR" secondAttribute="top" constant="20" id="253-ls-pkN"/>
+                            <constraint firstItem="1hR-4g-Xib" firstAttribute="top" secondItem="WuR-3a-rc9" secondAttribute="bottom" constant="20" id="IR8-B6-J6y"/>
+                            <constraint firstItem="ioY-Mg-aDR" firstAttribute="trailing" secondItem="DZ5-6U-rOV" secondAttribute="trailing" constant="20" id="YsA-4v-URs"/>
+                            <constraint firstItem="1hR-4g-Xib" firstAttribute="trailing" secondItem="ioY-Mg-aDR" secondAttribute="trailing" id="eGq-65-Ew3"/>
+                            <constraint firstItem="1hR-4g-Xib" firstAttribute="leading" secondItem="ioY-Mg-aDR" secondAttribute="leading" id="eWJ-eh-qiL"/>
+                            <constraint firstItem="DZ5-6U-rOV" firstAttribute="leading" secondItem="WuR-3a-rc9" secondAttribute="trailing" constant="20" id="l1t-8H-kG7"/>
+                            <constraint firstItem="1hR-4g-Xib" firstAttribute="bottom" secondItem="ioY-Mg-aDR" secondAttribute="bottom" id="s78-97-Xb0"/>
+                            <constraint firstItem="DZ5-6U-rOV" firstAttribute="top" secondItem="ioY-Mg-aDR" secondAttribute="top" constant="20" id="tHX-gj-MuZ"/>
+                            <constraint firstItem="WuR-3a-rc9" firstAttribute="leading" secondItem="ioY-Mg-aDR" secondAttribute="leading" constant="20" id="yav-zy-12R"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ioY-Mg-aDR"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Chat" id="FLk-bt-k4K"/>
+                    <connections>
+                        <outlet property="messageField" destination="WuR-3a-rc9" id="53d-RN-cTU"/>
+                        <outlet property="tableView" destination="1hR-4g-Xib" id="3fT-D0-pr4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DwR-TC-dG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1908" y="158.77061469265368"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1lC-WR-goz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MdG-eO-pFN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MiP-Nq-rve">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Hwq-ac-993" kind="relationship" relationship="rootViewController" id="QHo-y1-pGX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h1b-pg-fyj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1109.5999999999999" y="158.77061469265368"/>
         </scene>
     </scenes>
 </document>
