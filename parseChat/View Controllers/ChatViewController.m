@@ -55,9 +55,10 @@
 */
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    ChatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
+    ChatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell"];
     
-    cell.messageLabel = self.messagesArray[indexPath.row];
+    PFObject *msg = self.messagesArray[indexPath.row];
+    cell.messageLabel.text = msg[@"text"];
     return cell;
 }
 
