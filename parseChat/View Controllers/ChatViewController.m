@@ -33,6 +33,7 @@
 - (IBAction)didPressSend:(id)sender {
     PFObject *chatMessage = [PFObject objectWithClassName:@"Message_fbu2019"];
     chatMessage[@"text"] = self.messageField.text;
+    chatMessage[@"user"] = PFUser.currentUser;
     
     [chatMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (succeeded) {
@@ -59,6 +60,14 @@
     
     PFObject *msg = self.messagesArray[indexPath.row];
     cell.messageLabel.text = msg[@"text"];
+    PFUser *user = msg[@"user"];
+    if (user != nil) {
+        // User found! update username label with username
+        cell.usernameLabel.text = user.username;
+    } else {
+        // No user found, set default username
+        cell.usernameLabel.text = @"🤖";
+    }
     return cell;
 }
 
@@ -70,6 +79,7 @@
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Message_fbu2019"];
     [query orderByDescending:@"createdAt"];
+    [query includeKey:@"user"];
     query.limit = 20;
     
     // fetch data asynchronously
